@@ -3,38 +3,43 @@
     --border: 1rem;
 }
 
-* {
+html, body {
+    height: 100%;
     font-family: var(--system-font);
 }
 
-body {
-    margin: var(--border);
-    background: black;
-    height: calc(100vh - calc(var(--border) * 2));
+h1 {
+    text-align: center;
 }
 
 div#content {
-    height: calc(100% - calc(var(--border) * 2));
+    min-height: 100%;
+    max-width: 1080px;
     background: white;
+    margin: 0 auto;
     padding: var(--border);
     box-sizing: border-box;
 }
 
 div#game-board {
-    height: 100%;
     width: 100%;
+    background: black;
+    border: 1px solid black;
     box-sizing: border-box;
     display: grid;
     gap: 1px;
     grid-template-columns: repeat(3, 1fr);
     grid-template-rows: repeat(3, 1fr);
-    background: black;
-    border: 1px solid black;
 }
 
 div#game-board div {
+    min-height: 4rem;
     background: white;
     display: flex;
     justify-content: center;
     align-items: center;
+}
+
+div.space {
+    cursor: pointer;
 }

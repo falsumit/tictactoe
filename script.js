@@ -38,8 +38,10 @@ Instructions:
         board: []
     }
 
+    game.board.push('hello', 'world');
+    console.log(game);
     return game
-})()
+})();
 
 function createUser(name) {
     const userName = name;
@@ -50,10 +52,50 @@ function createUser(name) {
     return { userName, userScore, getUserScore, giveUserScore }
 }
 
-function opponent() {
+function createOp(name) {
+    const opName = name;
     let opScore = 0;
     const getOpScore = () => opScore;
     const giveOpScore = () => opScore++;
 
-    return { opScore, getOpScore, giveOpScore }
+    return { opName, opScore, getOpScore, giveOpScore }
 }
+
+(function() {
+    const start = document.querySelector('button');
+    start.addEventListener('click', (name) => {
+        name = prompt('Enter your name');
+        const newUser = createUser(name);
+        const newOp = createOp('Opponent');
+        console.log(`${newUser.userName}'s Score: ${newUser.userScore}`);
+        console.log(`${newOp.opName}'s Score: ${newOp.opScore}`);
+    });
+})();
+
+function selectSpace (choice) {
+    const spaces = document.querySelectorAll('.space');
+
+    do {
+        choice = (Math.floor(Math.random() * spaces.length));
+    } while (spaces[choice].textContent !== '');
+
+    return choice
+}
+
+(function() {
+    const spaces = document.querySelectorAll('.space');
+    const userIco = 'X';
+    const opIco = 'O';
+
+    for (let i = 0; i < spaces.length; i++) {
+        spaces[i].addEventListener('click', () => {
+            if (spaces[i].textContent === '') {
+                spaces[i].textContent = userIco;
+            }
+        });
+    }
+
+    selectSpace();
+    spaces[selectSpace()].textContent = opIco;
+    console.log(selectSpace());
+})();
