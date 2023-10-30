@@ -12,6 +12,10 @@ h1 {
     text-align: center;
 }
 
+form {
+    margin: 0 0 1rem 0;
+}
+
 div#content {
     min-height: 100%;
     max-width: 1080px;
@@ -42,4 +46,9 @@ div#game-board div {
 
 div.space {
     cursor: pointer;
+}
+
+button#restart {
+    display: none;
+    margin: 1rem 0 0 0;
 }

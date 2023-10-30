@@ -11,18 +11,25 @@
 <body>
     <div id='content'>
         <h1>Tic Tac Toe</h1>
-        <button type='button'>Start Game</button>
+        <form id='start'>
+            <div>
+                <label for='name'>Name</label>
+                <input type='text' id='name' name='name' required/>
+            </div>
+            <button type='submit'>Start Game</button>
+        </form>
         <div id='game-board'>
-            <div id='board-zero' class='space'>X</div>
-            <div id='board-one' class='space'>X</div>
-            <div id='board-two' class='space'>X</div>
-            <div id='board-three' class='space'>X</div>
-            <div id='board-four' class='space'>X</div>
-            <div id='board-five' class='space'>X</div>
+            <div id='board-zero' class='space'></div>
+            <div id='board-one' class='space'></div>
+            <div id='board-two' class='space'></div>
+            <div id='board-three' class='space'></div>
+            <div id='board-four' class='space'></div>
+            <div id='board-five' class='space'></div>
             <div id='board-six' class='space'></div>
-            <div id='board-seven' class='space'>X</div>
+            <div id='board-seven' class='space'></div>
             <div id='board-eight' class='space'></div>
         </div>
+        <button type='button' id='restart'>Resart Game</button>
     </div>
 </body>
 </html>
