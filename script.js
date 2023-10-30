@@ -35,20 +35,19 @@ Instructions:
 
 // Game board
 
-(function() {
-    const game = (function() {
-        const board = [];
-        const spaces = document.querySelectorAll('.space');
-        for(let i = 0; i < spaces.length; i++) {
-            board.push(spaces[i]);
-        }
-    
-        return { board }
-    })();
-    
-    console.log(game);
-    console.log(game.board);
+
+const game = (function() {
+    const board = [];
+    const spaces = document.querySelectorAll('.space');
+    for(let i = 0; i < spaces.length; i++) {
+        board.push(spaces[i]);
+    }
+
+    return { board }
 })();
+
+console.log(game);
+console.log(game.board);
 
 // Users
 
