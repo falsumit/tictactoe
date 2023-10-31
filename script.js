@@ -33,8 +33,7 @@ Instructions:
 
 */
 
-// Game board
-
+/* ----Game board---- */
 
 const game = (function() {
     const board = [];
@@ -47,9 +46,17 @@ const game = (function() {
 })();
 
 console.log(game);
-console.log(game.board);
 
-// Users
+
+/* ----Users---- */
+
+const users = (function () {
+    const roster = [];
+
+    return { roster }
+})();
+
+console.log(users);
 
 (function() {
     const form = document.getElementById('start');
@@ -84,11 +91,25 @@ function createUsers(event) {
     const user = createUser(formName);
     const opponent = createOp('Opponent');
 
-    console.log(user);
-    console.log(opponent);
+    users.roster.push(user, opponent);
+
+    console.log(users.roster);
 }
 
-// Opponent logic
+/* ----Game logic---- */
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 // function selectSpace (choice) {
 //     do {
