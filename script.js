@@ -33,7 +33,7 @@ Instructions:
 
 */
 
-/* ----Game board---- */
+/* ----GAME BOARD---- */
 
 const game = (function() {
     const board = [];
@@ -47,8 +47,13 @@ const game = (function() {
 
 console.log(game);
 
+(function(gameBoard) {
+    gameBoard = document.getElementById('game-board');
+    gameBoard.style = 'visibility:hidden';
+})();
 
-/* ----Users---- */
+
+/* ----USERS---- */
 
 const users = (function () {
     const roster = [];
@@ -73,19 +78,21 @@ function createUsers(event) {
     function createUser(name) {
         const userName = name;
         let userScore = 0;
+        let userFlow = 0;
         const getUserScore = () => userScore;
         const giveUserScore = () => userScore++;
     
-        return { userName, userScore, getUserScore, giveUserScore }
+        return { userName, userScore, userFlow, getUserScore, giveUserScore }
     }
 
     function createOp(name) {
         const opName = name;
         let opScore = 0;
+        let opFlow = 0;
         const getOpScore = () => opScore;
         const giveOpScore = () => opScore++;
     
-        return { opName, opScore, getOpScore, giveOpScore }
+        return { opName, opScore, opFlow, getOpScore, giveOpScore }
     }
 
     const user = createUser(formName);
@@ -93,10 +100,67 @@ function createUsers(event) {
 
     users.roster.push(user, opponent);
 
+    const form = document.getElementById('start');
+    form.reset();
+    form.style = 'display:none';
+
+    const gameBoard = document.getElementById('game-board');
+    gameBoard.style = 'visibility:visible';
+
     console.log(users.roster);
 }
 
-/* ----Game logic---- */
+/* ----GAME LOGIC---- */
+
+function selectSpace(choice) {
+    choice = game.board[(Math.floor(Math.random() * game.board.length))];
+
+    return choice
+}
+
+(function(opSpace) {
+    opSpace = selectSpace();
+
+    const opIco = 'O';
+
+    opSpace.classList.toggle(opIco);
+    opSpace.textContent = opIco;
+})();
+
+(function(spaces) {
+    spaces = game.board
+    const userIco = 'X';
+    const opIco = 'O';
+
+    for(let i = 0; i < spaces.length; i++) {
+        spaces[i].addEventListener('click', () => {
+            if(spaces[i].classList.contains(opIco) || spaces[i].classList.contains(userIco)) {
+                alert('That space is taken. Please choose another.');
+            } else {
+                spaces[i].classList.toggle(userIco);
+                spaces[i].textContent = userIco;
+            }
+        })
+    }
+})();
+
+// STILL NEED CPU LOGIC
+
+/* ----GAME FLOW---- */
+
+function win() {
+    spaces = game.board;
+    const winConditions = [
+        [0, 1, 2],
+        [0, 3, 6],
+        [0, 4, 8],
+        [1, 4, 7],
+        [2, 5, 8],
+        [2, 4, 6],
+        [3, 4, 5],
+        [6, 7, 8],
+    ];
+}
 
 
 
@@ -108,8 +172,7 @@ function createUsers(event) {
 
 
 
-
-
+/* ----OLD CODE---- */
 
 // function selectSpace (choice) {
 //     do {
